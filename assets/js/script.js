@@ -1,17 +1,17 @@
 // Assignment Code
 
-let generateBtn = document.querySelector("#generate");
+generateBtn = document.querySelector("#generate");
 console.log(generateBtn);
 
-const pLc = "abcdefghijklmnopqrstuvwxyz";
+var pLc = "abcdefghijklmnopqrstuvwxyz";
 
-const pUc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var pUc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const pSpec = "#$%&()*+<=>?@";
+var pSpec = "#$%&()*+<=>?@";
 
-const pNum = "0123456789";
+var pNum = "0123456789";
 
-let allChar = "";
+var passChar = "";
 
 // My work Section
 function start() {
@@ -22,38 +22,38 @@ function start() {
     alert("Try again");
     return start();
   }
-  generatePassword();
 }
 
 function generatePassword() {
-  var passLength = prompt(
-    "Between 8 and 128 characters, how long would you like your password to be?"
+  var passLength = Number(
+    prompt(
+      "Let's choose between 8 and 128 characters, how long would you like your password to be?"
+    )
   );
-  if (passLength < 8 && passLength > 128 && isNaN(parseInt(passLength))) {
-    alert("Please enter a number from 8 to 128.");
-    generatePassword();
+  if (passLength < 8 && passLength > 128) {
+    alert("stop");
   } else {
     var lowerCase = window.confirm(
       "Would you like to use lower case characters?"
     );
     if (lowerCase) {
-      allChar += pLc;
+      passChar += pLc;
     }
     var upperCase = window.confirm(
       "Would you like to use upper case characters?"
     );
     if (upperCase) {
-      allChar += pUc;
+      passChar += pUc;
     }
     var specialCharacters = window.confirm(
       "Would you like to use special characters?"
     );
     if (pSpec) {
-      allChar += pSpec;
+      passChar += pSpec;
     }
     var numbers = window.confirm("Would you like to use numbers?");
     if (pNum) {
-      allChar += pNum;
+      passChar += pNum;
     }
 
     if (
@@ -68,7 +68,7 @@ function generatePassword() {
   }
   var passWrd = "";
   for (var i = 0; i < passLength; i++) {
-    passWrd += allChar.charAt(Math.floor(Math.random() * allChar.length));
+    passWrd += passChar.charAt(Math.floor(Math.random() * passChar.length));
   }
   return passWrd;
 }
@@ -82,4 +82,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-console.log(generateBtn);
