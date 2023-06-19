@@ -3,6 +3,7 @@
 generateBtn = document.querySelector("#generate");
 console.log(generateBtn);
 
+// variables used throught my code
 var pLc = "abcdefghijklmnopqrstuvwxyz";
 
 var pUc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -11,7 +12,7 @@ var pSpec = "#$%&()*+<=>?@";
 
 var pNum = "0123456789";
 
-// My work Section
+// created a new function so I can push the user back to this question without including it into the password generator function
 function start() {
   console.log("Button Clicked");
   var fun = prompt("Would you like to generate a password? Type yes or no.");
@@ -22,14 +23,17 @@ function start() {
   }
 }
 
+// function used to start the password generator
 function generatePassword() {
   var passChar = "";
-  let passLength = Number(
+  var passLen = Number(
     prompt(
       "Let's choose between 8 and 128 characters, how long would you like your password to be?"
     )
   );
-  if (passLength < 8 || passLength > 128) {
+
+  // if statements used to confirm/deny users inupt
+  if (passLen < 8 || passLen > 128) {
     alert("Try again");
     return generatePassword();
   } else {
@@ -66,8 +70,9 @@ function generatePassword() {
       start();
     }
   }
+  // foreloop used to combine everything together and randomize it
   var passWrd = "";
-  for (var i = 0; i < passLength; i++) {
+  for (var i = 0; i < passLen; i++) {
     passWrd += passChar.charAt(Math.floor(Math.random() * passChar.length));
   }
   return passWrd;
