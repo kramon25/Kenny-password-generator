@@ -11,8 +11,6 @@ var pSpec = "#$%&()*+<=>?@";
 
 var pNum = "0123456789";
 
-var passChar = "";
-
 // My work Section
 function start() {
   console.log("Button Clicked");
@@ -25,27 +23,29 @@ function start() {
 }
 
 function generatePassword() {
-  var passLength = Number(
+  var passChar = "";
+  let passLength = Number(
     prompt(
       "Let's choose between 8 and 128 characters, how long would you like your password to be?"
     )
   );
-  if (passLength < 8 && passLength > 128) {
-    alert("stop");
+  if (passLength < 8 || passLength > 128) {
+    alert("Try again");
+    return generatePassword();
   } else {
-    var lowerCase = window.confirm(
+    var lowCase = window.confirm(
       "Would you like to use lower case characters?"
     );
-    if (lowerCase) {
+    if (lowCase) {
       passChar += pLc;
     }
-    var upperCase = window.confirm(
+    var uppCase = window.confirm(
       "Would you like to use upper case characters?"
     );
-    if (upperCase) {
+    if (uppCase) {
       passChar += pUc;
     }
-    var specialCharacters = window.confirm(
+    var specCharacters = window.confirm(
       "Would you like to use special characters?"
     );
     if (pSpec) {
@@ -57,12 +57,12 @@ function generatePassword() {
     }
 
     if (
-      lowerCase === false &&
-      upperCase === false &&
-      specialCharacters === false &&
+      lowCase === false &&
+      uppCase === false &&
+      specCharacters === false &&
       numbers === false
     ) {
-      alert("Please select at least one character type.");
+      alert("Please choose a character type.");
       start();
     }
   }
