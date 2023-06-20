@@ -36,30 +36,35 @@ function generatePassword() {
   if (passLen < 8 || passLen > 128) {
     alert("Try again");
     return generatePassword();
-  } else {
+  }
+  // ------------------------------------------
+  else {
     var lowCase = window.confirm(
       "Would you like to use lower case characters?"
     );
     if (lowCase) {
       passChar += pLc;
     }
+    // ------------------------------------------
     var uppCase = window.confirm(
       "Would you like to use upper case characters?"
     );
     if (uppCase) {
       passChar += pUc;
     }
+    // ------------------------------------------
     var specCharacters = window.confirm(
       "Would you like to use special characters?"
     );
     if (pSpec) {
       passChar += pSpec;
     }
+    // ------------------------------------------
     var numbers = window.confirm("Would you like to use numbers?");
     if (pNum) {
       passChar += pNum;
     }
-
+    // ------------------------------------------
     if (
       lowCase === false &&
       uppCase === false &&
